@@ -5,14 +5,14 @@ import styles from "../styles/RepoList.module.css";
 
 export default function RepoList() {
   const dispatch = useDispatch<AppDispatch>();
-  const { repos, user, selectedRepo } = useSelector(
+  const { repos, users, selectedRepo } = useSelector(
     (state: RootState) => state.github
   );
 
   const handleRepoClick = async (repoName: string) => {
     dispatch(setSelectedRepo(repoName));
-    if (user) {
-      await dispatch(fetchReadme({ owner: user.login, repo: repoName }));
+    if (users) {
+      await dispatch(fetchReadme({ owner: users.login, repo: repoName }));
     }
   };
 

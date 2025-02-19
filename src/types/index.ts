@@ -8,10 +8,16 @@ export interface GitHubRepo {
     default_branch: string;
   }
   
-  export interface GitHubUser {
+  export interface GitHubUsers {
     login: string;
     avatar_url: string;
     name: string;
     bio: string;
     public_repos: number;
+    items: User[]
+  }
+  export interface User {
+    login: string;
+    avatar_url: string;
+    id: number;
   }

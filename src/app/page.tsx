@@ -12,7 +12,7 @@ import styles from '../styles/Home.module.css';
 
 export default function Home() {
   const dispatch = useDispatch<AppDispatch>();
-  const { user, loading, error } = useSelector((state: RootState) => state.github);
+  const { users, loading, error } = useSelector((state: RootState) => state.github);
   const [username, setUsername] = useState('');
 
   const handleSearch = async (e: React.FormEvent) => {
@@ -20,7 +20,7 @@ export default function Home() {
     if (!username.trim()) return;
 
     await dispatch(fetchUser(username));
-    await dispatch(fetchUserRepos(username));
+    // await dispatch(fetchUserRepos(username));
   };
 
   return (
@@ -32,15 +32,15 @@ export default function Home() {
       />
       {loading && <div className={styles.loading}>Loading...</div>}
       {error && <div className={styles.error}>{error}</div>}
-      {user && (
+      {users && (
         <div className={styles.content}>
           <div className={styles.leftPanel}>
             <UserProfile />
-            <RepoList />
+            {/* <RepoList /> */}
           </div>
-          <div className={styles.rightPanel}>
+          {/* <div className={styles.rightPanel}>
             <ReadmeViewer />
-          </div>
+          </div> */}
         </div>
       )}
     </main>

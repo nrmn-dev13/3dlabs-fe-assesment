@@ -1,0 +1,43 @@
+.cards-wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: auto;
+  grid-gap: 2rem;
+  grid-template-rows: auto 1fr;
+}
+.cards-wrapper .custom-cards {
+  min-height: 200px;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  color: black;
+  overflow: hidden;
+  cursor: pointer;
+}
+.cards-wrapper .custom-cards-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.cards-wrapper .custom-cards-wrapper .button-wrapper {
+  margin-top: auto;
+}
+.cards-wrapper .custom-cards-wrapper-img {
+  padding-top: 70%;
+  position: relative;
+  overflow: hidden;
+}
+.cards-wrapper .custom-cards-wrapper-img img {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+}
+.cards-wrapper .custom-cards-wrapper-title {
+  padding: 10px;
+}
+.cards-wrapper .custom-cards-wrapper-title span {
+  display: block;
+}
