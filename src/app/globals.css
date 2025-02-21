@@ -14,24 +14,11 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
   background-color: var(--background-color);
   color: var(--text-color);
   line-height: 1.5;
-}
-
-/* src/styles/Home.module.css */
-.main {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-.content {
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  gap: 2rem;
-  margin-top: 2rem;
 }
 
 .loading {
@@ -50,15 +37,6 @@ body {
   margin: 1rem 0;
 }
 
-@media (max-width: 768px) {
-  .content {
-    grid-template-columns: 1fr;
-  }
-  
-  .main {
-    padding: 1rem;
-  }
-}
 .cards-wrapper {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -101,4 +79,57 @@ body {
 }
 .cards-wrapper .custom-cards-wrapper-title span {
   display: block;
+}
+/* src/App.css */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  height: 80%;
+  overflow-y: scroll;
+  position: relative;
+}
+li {
+  list-style: none;
+}
+
+pre {
+  background-color: #e4e4e4;
+  padding: 20px;
+  margin: 10px 0;
+}
+a {
+  text-decoration: none;
+  color: #0366d6;
+}
+
+.icon-wrapper {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+.icon-wrapper .icon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 767px) {
+  .modal-content {
+    width: 90%;
+  }
 }

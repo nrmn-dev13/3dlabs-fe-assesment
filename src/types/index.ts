@@ -14,6 +14,10 @@ export interface GitHubRepo {
     name: string;
     bio: string;
     public_repos: number;
+    following: number;
+    followers: number;
+    company: string;
+    location: string;
     items: User[]
   }
   export interface User {

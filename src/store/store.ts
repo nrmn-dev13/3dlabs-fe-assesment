@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import githubReducer from './githubSlice';
+import modalReducer from './modalSlice';
 
 export const store = configureStore({
   reducer: {
     github: githubReducer,
+    modal: modalReducer,
   },
 });
 

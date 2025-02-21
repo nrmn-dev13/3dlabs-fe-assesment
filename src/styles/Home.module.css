@@ -1,0 +1,19 @@
+.main {
+  padding: 0 20px;
+  margin: 0 30px 30px;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .main {
+    padding: 0 16px;
+    margin: 0 16px 30px;
+  }
+}
+
+/* Styles for Mobile Devices (max-width: 767px) */
+@media only screen and (max-width: 767px) {
+  .main {
+    padding: 0 16px;
+    margin: 0 16px 30px;
+  }
+}

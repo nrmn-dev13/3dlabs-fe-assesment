@@ -1,10 +1,12 @@
-import { useSelector } from 'react-redux';
-import { RootState } from '../store/store';
-import { marked } from 'marked';
-import styles from '../styles/ReadmeViewer.module.css';
+import { useSelector } from "react-redux";
+import { RootState } from "../store/store";
+import { marked } from "marked";
+import styles from "../styles/ReadmeViewer.module.css";
 
 export default function ReadmeViewer() {
-  const { readmeContent, selectedRepo } = useSelector((state: RootState) => state.github);
+  const { readmeContent, selectedRepo } = useSelector(
+    (state: RootState) => state.github
+  );
 
   if (!selectedRepo || !readmeContent) {
     return (
@@ -18,11 +20,13 @@ export default function ReadmeViewer() {
 
   return (
     <div className={styles.readme}>
-      <h3>{selectedRepo} README</h3>
-      <div 
-        className={styles.content}
-        dangerouslySetInnerHTML={{ __html: htmlContent }}
-      />
+      <div className={styles.wrapper}>
+        <h3>{selectedRepo} README</h3>
+        <div
+          className="content"
+          dangerouslySetInnerHTML={{ __html: htmlContent }}
+        />
+      </div>
     </div>
   );
 }

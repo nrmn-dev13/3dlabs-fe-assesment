@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { GitHubUsers, GitHubRepo } from '../types';
 
 interface GithubState {
-  users: GitHubUsers | null;
+  user: GitHubUsers | null;
   repos: GitHubRepo[];
   selectedRepo: string | null;
   readmeContent: string | null;
@@ -11,7 +11,7 @@ interface GithubState {
 }
 
 const initialState: GithubState = {
-  users: null,
+  user: null,
   repos: [],
   selectedRepo: null,
   readmeContent: null,
@@ -22,7 +22,8 @@ const initialState: GithubState = {
 export const fetchUser = createAsyncThunk(
   'github/fetchUser',
   async (username: string) => {
-    const response = await fetch(`https://api.github.com/search/users?q=${username}`);
+    //const response = await fetch(`https://api.github.com/search/users?q=${username}`);
+    const response = await fetch(`https://api.github.com/users/${username}`);
     if (!response.ok) throw new Error('User not found');
     return response.json();
   }
@@ -58,7 +59,7 @@ const githubSlice = createSlice({
   initialState,
   reducers: {
     clearState: (state) => {
-      state.users = null;
+      state.user = null;
       state.repos = [];
       state.selectedRepo = null;
       state.readmeContent = null;
@@ -76,7 +77,7 @@ const githubSlice = createSlice({
       })
       .addCase(fetchUser.fulfilled, (state, action) => {
         state.loading = false;
-        state.users = action.payload;
+        state.user = action.payload;
       })
       .addCase(fetchUser.rejected, (state, action) => {
         state.loading = false;
