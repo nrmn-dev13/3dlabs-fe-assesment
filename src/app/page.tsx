@@ -33,7 +33,12 @@ export default function Home() {
         setUsername={setUsername}
         onSubmit={handleSearch}
       />
-      {loading && <div className={styles.loading}>Loading...</div>}
+
+      {loading && 
+        <div className={styles.loaderOverlay}>
+          <div className={styles.loader}></div>
+        </div>
+      }
       {error && <div className={styles.error}>{error}</div>}
       {user && (
         <div className={styles.content}>
