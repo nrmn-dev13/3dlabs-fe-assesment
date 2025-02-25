@@ -18,9 +18,8 @@ export interface GitHubRepo {
     followers: number;
     company: string;
     location: string;
-    items: User[]
   }
-  export interface User {
+  export interface Items {
     login: string;
     avatar_url: string;
     id: number;

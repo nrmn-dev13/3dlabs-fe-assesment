@@ -25,6 +25,8 @@ export default function RepoList() {
     <div className={styles.repoList}>
       <h3>Repositories</h3>
       <div className={styles.cardsWrapper}>
+        {repos.length === 0 && <p>Doesn't have yet any repository</p>}
+        
         {repos.map((repo) => (
           <div
             key={repo.id}

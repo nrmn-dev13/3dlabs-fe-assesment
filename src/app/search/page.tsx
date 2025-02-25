@@ -3,19 +3,19 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store/store";
-import { fetchUser, fetchUserRepos } from "../../store/githubSlice";
+import { fetchUser, fetchItems, fetchUserRepos } from "../../store/githubSlice";
 import SearchBar from "../../components/SearchBar";
-import UserProfile from "../../components/UserProfile";
-import UsersList from "../../components/UsersList";
+//import UserProfile from "../../components/UserProfile";
+import UserLists from "../../components/UserLists";
 import RepoList from "../../components/RepoList";
 import ReadmeViewer from "../../components/ReadmeViewer";
 import styles from "../../styles/Home.module.css";
-import Modal from "../../components/Modal";
-import { openModal } from "@/store/modalSlice";
+import Modal from "@/components/Modal";
 
-export default function Home() {
+
+export default function SearchPage() {
   const dispatch = useDispatch<AppDispatch>();
-  const { user, loading, error } = useSelector(
+  const { items, loading, error } = useSelector(
     (state: RootState) => state.github
   );
   const [username, setUsername] = useState("");
@@ -24,9 +24,8 @@ export default function Home() {
     e.preventDefault();
     if (!username.trim()) return;
 
-    await dispatch(fetchUser(username));
-    setUsername("");
-    await dispatch(fetchUserRepos(username));
+    await dispatch(fetchItems(username));
+    // await dispatch(fetchUserRepos(username));
   };
 
   return (
@@ -36,23 +35,24 @@ export default function Home() {
         setUsername={setUsername}
         onSubmit={handleSearch}
       />
-      <button onClick={() => dispatch(openModal())}>Open Modal</button>
-      {/* <Modal>
-        <h1>Hello this is modal</h1>
-      </Modal> */}
-      {loading && <div className={styles.loading}>Loading...</div>}
+
+      {loading && 
+        <div className={styles.loaderOverlay}>
+          <div className={styles.loader}></div>
+        </div>
+      }
       {error && <div className={styles.error}>{error}</div>}
-      {user && (
+      {items && (
         <div className={styles.content}>
           <div className={styles.leftPanel}>
-            <UsersList />
-            <RepoList />
+            <UserLists />
+            {/* <RepoList /> */}
           </div>
-          <div className={styles.rightPanel}>
+          {/* <div className={styles.rightPanel}>
             <Modal>
               <ReadmeViewer />
             </Modal>
-          </div>
+          </div> */}
         </div>
       )}
     </main>
