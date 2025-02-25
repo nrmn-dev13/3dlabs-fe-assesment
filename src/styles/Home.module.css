@@ -1,6 +1,7 @@
 .main {
   padding: 0 20px;
   margin: 0 30px 30px;
+  position: relative;
 }
 
 .loader {
@@ -31,6 +32,25 @@
   width: calc(100% - 2rem);
   padding-bottom: calc(100% - 2rem);
   box-shadow: 0 0 0 0 #fff;
+}
+.back {
+  position: absolute;
+  width: 50px;
+  display: flex;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  top: 0;
+  left: 0;
+}
+.back svg {
+  text-decoration: none;
+  color: black;
+  font-size: 24px;
 }
 
 @keyframes pulsIn {
